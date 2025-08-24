@@ -6,9 +6,8 @@ TMP="/tmp/ddx_fpm_$$"
 mkdir -p "$TMP/src" "$TMP/test"
 cat > "$TMP/fpm.toml" <<'FPM'
 name = "ddx"
-version = "0.1.0"
-license = "MIT"
-author = "ddx fpm"
+version = "0.6.1"
+license = "LGPL-3.0"
 [build]
 auto-executables = false
 auto-tests = false
