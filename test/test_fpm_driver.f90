@@ -3,6 +3,16 @@ program test_fpm_driver
   integer :: istat, i, j, level
   character(len=512) :: path, prefix, cmd
 
+  ! Try absolute path first (repository root)
+  call execute_command_line('test -x /home/wittmann/Documents/projects/software-programs/ddX/test/fpm-test.sh', exitstat=istat)
+  if (istat == 0) then
+    call execute_command_line('bash /home/wittmann/Documents/projects/software-programs/ddX/test/fpm-test.sh', exitstat=istat)
+    if (istat /= 0) then
+      stop 1
+    end if
+    stop 0
+  end if
+
   do level = 0, 5
     if (level == 0) then
       prefix = './'
