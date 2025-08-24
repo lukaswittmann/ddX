@@ -1,3 +1,4 @@
+#ifdef BUILD_PYBIND11
 #include "ddx.h"
 #include <pybind11/eval.h>
 #include <pybind11/numpy.h>
@@ -813,3 +814,5 @@ void export_pyddx_classes(py::module& m) {
              "if requested, forces", "elec_field"_a = py::none(),
              "read_guess"_a = false, "tol"_a = DEFAULT_TOLERANCE);
 }
+
+#endif
