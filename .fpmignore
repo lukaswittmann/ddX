@@ -1,0 +1,8 @@
+# Ignore C/C++ sources and headers (we only want Fortran files built by fpm)
+src/**/*.cpp
+src/**/*.c
+src/**/*.h
+src/**/*.hpp
+src/**/*.hpp
+src/**/pyddx*.cpp
+src/**/*.mod
