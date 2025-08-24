@@ -1,16 +1,21 @@
 program test_fpm_driver
   implicit none
-  integer :: istat, i
-  character(len=256), dimension(6) :: paths
-  character(len=512) :: cmd
+  integer :: istat, i, j, level
+  character(len=512) :: path, prefix, cmd
 
-  paths = (/'./test/fpm-test.sh','../test/fpm-test.sh','../../test/fpm-test.sh',&
-            '../../../test/fpm-test.sh','../../../../test/fpm-test.sh','/test/fpm-test.sh'/)
-
-  do i = 1, size(paths)
-    call execute_command_line('test -x ' // trim(paths(i)), exitstat=istat)
+  do level = 0, 5
+    if (level == 0) then
+      prefix = './'
+    else
+      prefix = ''
+      do j = 1, level
+        prefix = prefix // '../'
+      end do
+    end if
+    path = prefix // 'test/fpm-test.sh'
+    call execute_command_line('test -x ' // trim(path), exitstat=istat)
     if (istat == 0) then
-      cmd = 'bash ' // trim(paths(i))
+      cmd = 'bash ' // trim(path)
       call execute_command_line(trim(cmd), exitstat=istat)
       if (istat /= 0) then
         stop 1
