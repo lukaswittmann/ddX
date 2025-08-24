@@ -1,9 +1,31 @@
+[package]
 name = "ddx"
 version = "0.6.1"
 license = "LGPL-3.0"
+
 [build]
 auto-executables = false
-auto-tests = true
+auto-tests = false
 auto-examples = false
+
+[[target]]
+name = "ddx"
+type = "library"
+sources = ["src/**/*.f90", "src/**/*.f"]
+
+[[target]]
+name = "ddx_driver"
+type = "executable"
+sources = ["src/ddx_driver.f90"]
+
+[[target]]
+name = "fpm_test"
+type = "executable"
+sources = ["src/test_fpm_driver.f90"]
+
+[[test]]
+name = "fpm-test"
+target = "fpm_test"
+
 [install]
 library = false

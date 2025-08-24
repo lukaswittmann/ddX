@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec "/home/wittmann/Documents/projects/software-programs/ddX/build/gfortran_1799CCBEA26248CD/ddx_driver" "$@"
